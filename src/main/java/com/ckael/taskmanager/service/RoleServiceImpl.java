@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.ckael.taskmanager.exception.NotFound;
-import com.ckael.taskmanager.model.Role;
+import com.ckael.taskmanager.model.RoleEntity;
 import com.ckael.taskmanager.repository.RoleRepository;
 
 @Service
@@ -15,19 +15,19 @@ public class RoleServiceImpl implements RoleService {
 	@Autowired
 	RoleRepository rep;
 	@Override
-	public Role addRole(Role r) {
+	public RoleEntity addRole(RoleEntity r) {
 		
 		return rep.save(r);
 	}
 
 	@Override
-	public Role updateRole(Role r) {
+	public RoleEntity updateRole(RoleEntity r) {
 		
 		return rep.save(r);
 	}
 
 	@Override
-	public void deleteRole(Role r) {
+	public void deleteRole(RoleEntity r) {
 		rep.delete(r);
 
 	}
@@ -39,15 +39,11 @@ public class RoleServiceImpl implements RoleService {
 	}
 
 	@Override
-	public List<Role> listRoles() {
+	public List<RoleEntity> listRoles() {
 		
 		return rep.findAll();
 	}
 
-	@Override
-	public Role findByName(String name) throws NotFound{
-		
-		return rep.findByRole_name(name).orElseThrow(()->new NotFound("Role not found"));
-	}
+	
 
 }

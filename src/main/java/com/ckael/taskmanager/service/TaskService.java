@@ -11,5 +11,6 @@ public interface TaskService {
 	void deleteTask(Long Id);
 	void deleteTask(Task t);
 	List<Task> listTasks();
+	Task findById(Long Id);
 		
 }

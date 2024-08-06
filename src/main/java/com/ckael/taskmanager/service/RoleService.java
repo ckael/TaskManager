@@ -2,13 +2,13 @@ package com.ckael.taskmanager.service;
 
 import java.util.List;
 
-import com.ckael.taskmanager.model.Role;
+import com.ckael.taskmanager.model.RoleEntity;
 
 public interface RoleService {
-	Role addRole(Role r);
-	Role updateRole(Role r);
-	void deleteRole(Role r);
+	RoleEntity addRole(RoleEntity r);
+	RoleEntity updateRole(RoleEntity r);
+	void deleteRole(RoleEntity r);
 	void deleteRole(int id);
-	List<Role> listRoles();
-	Role findByName(String name);
+	List<RoleEntity> listRoles();
+	
 }

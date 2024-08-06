@@ -15,6 +15,7 @@ import jakarta.persistence.OneToOne;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.Getter;
@@ -33,13 +34,12 @@ public class Task {
 	
 	@Column
 	@NotBlank(message = "Task name must be not null")
-	@Min(5)
-	@Max(30)
+	@Size(min=5,max=30)
 	private String Task_name;
 	
 	@Column
 	@NotBlank(message = "Task details must be not null")
-	@Min(10)
+	@Size(min=10)
 	private String Task_details;
 	
 	@Column

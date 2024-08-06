@@ -13,7 +13,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import com.ckael.taskmanager.model.Role;
+import com.ckael.taskmanager.model.RoleEntity;
 import com.ckael.taskmanager.model.UserEntity;
 import com.ckael.taskmanager.repository.UserRepository;
 
@@ -25,13 +25,13 @@ public class UserServiceImpl implements UserService, UserDetailsService {
 
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-		UserEntity user = rep.findByUser_name(username).orElseThrow(()->new UsernameNotFoundException(username+"Not found"));
-		return new User(user.getUser_name(),user.getUser_password(),mapRoleAuth(user.getUser_Roles()));	
+		UserEntity user = rep.findByUserName(username).orElseThrow(()->new UsernameNotFoundException(username+"Not found"));
+		return new User(user.getUserName(),user.getUserPassword(),mapRoleAuth(user.getUserRoles()));	
 	}
-	private Collection<GrantedAuthority> mapRoleAuth(List<Role> roles)
+	private Collection<GrantedAuthority> mapRoleAuth(List<RoleEntity> roles)
 	{
 		
-		return roles.stream().map(Role->new SimpleGrantedAuthority(Role.getRole_name())).collect(Collectors.toList());
+		return roles.stream().map(Role->new SimpleGrantedAuthority(Role.getRoleName())).collect(Collectors.toList());
 	}
 
 	@Override
